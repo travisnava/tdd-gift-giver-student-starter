@@ -38,6 +38,43 @@ class GiftExchange {
 
         
     }
+    static traditional(names) {
+        let stringArray = []
+        let numOfNames = names.length
+        let usedNames = []
+        let sentence = " is giving a gift to "
+        let initialName1 = names[Math.floor(Math.random() * (names.length -1))]
+        let initialName2 = names[Math.floor(Math.random() * (names.length -1))]
+        let randomName = names[Math.floor(Math.random() * (names.length -1))]
+        
+
+        for (let i=0; i<numOfNames; i++) {
+            if (initialName1 === initialName2) {
+                initialName1 = names[Math.floor(Math.random() * (names.length -1)) +1]
+                i = i-1
+            }
+            else if (usedNames.length === 0) {
+                let newSentence = initialName1 + sentence + initialName2
+                stringArray.push(newSentence)
+                usedNames.push(initialName1)
+                usedNames.push(initialName2)
+            }
+            else if (usedNames.length === names.length) {
+                let lastUsedName = usedNames[(usedNames.length)-1]
+                let newSentence = lastUsedName + sentence + usedNames[0]
+                stringArray.push(newSentence)
+            }
+            else {
+                let lastUsedName = usedNames[(usedNames.length)-1]
+                let newSentence = lastUsedName + sentence + randomName
+                stringArray.push(newSentence)
+                usedNames.push(randomName)
+            }
+        }
+
+        return stringArray
+    }
+        
 
     
 
